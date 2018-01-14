@@ -2,6 +2,13 @@ package validator
 
 import "testing"
 
+func TestValidateRequiredPtrField(t *testing.T) {
+	vld, _ := ValidateRequiredPtrField("foo", nil)
+	if !vld.Error {
+		t.Errorf("nil value is not checked.")
+	}
+}
+
 func TestMatchRegexpEamil(t *testing.T) {
 	errorEmailArray := []string{
 		"@email.com",

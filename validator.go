@@ -2,13 +2,14 @@ package validator
 
 import (
 	"errors"
+	"reflect"
 	"regexp"
 )
 
 var ErrRequiredField = errors.New("required field")
 
 func ValidateRequiredPtrField(field string, input interface{}) (FieldValidation, error) {
-	if input == nil {
+	if input == nil || reflect.ValueOf(input).IsNil() {
 		return FieldValidation{true, field, field + " is required."}, ErrRequiredField
 	}
 	return FieldValidation{false, field, ""}, nil
