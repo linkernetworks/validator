@@ -5,6 +5,22 @@ import (
 	"regexp"
 )
 
+var ErrRequiredField = errors.New("required field")
+
+func ValidateRequiredPtrField(field string, input interface{}) (FieldValidation, error) {
+	if input == nil {
+		return FieldValidation{true, field, field + " is required."}, ErrRequiredField
+	}
+	return FieldValidation{false, field, ""}, nil
+}
+
+func ValidateRequiredStrField(field string, input string) (FieldValidation, error) {
+	if input == "" {
+		return FieldValidation{true, field, field + " is required."}, ErrRequiredField
+	}
+	return FieldValidation{false, field, ""}, nil
+}
+
 // ValidateEmail
 func ValidateEmail(email string) (FieldValidation, error) {
 	var emailValidation = FieldValidation{}
