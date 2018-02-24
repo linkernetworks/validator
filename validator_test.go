@@ -26,7 +26,7 @@ func TestMatchRegexpEamil(t *testing.T) {
 
 	correctEmailArray := []string{
 		"a@email.com",
-		// "a.b@email.com",
+		"a.b@email.com",
 		"a-b@email.com",
 		"ab@email.org",
 	}
