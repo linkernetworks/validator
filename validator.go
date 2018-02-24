@@ -47,7 +47,7 @@ func ValidateEmail(email string) (FieldValidation, error) {
 
 // matchRegexpEamil validate email by regexp
 func matchRegexpEamil(email string) bool {
-	emailReg := regexp.MustCompile(`^[a-zA-Z0-9_-.]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$`)
+	emailReg := regexp.MustCompile(`^[a-zA-Z0-9+_-.]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$`)
 	return emailReg.MatchString(email)
 }
 
